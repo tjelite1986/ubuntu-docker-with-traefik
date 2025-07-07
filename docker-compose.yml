@@ -1,0 +1,57 @@
+########################### NETWORKS
+networks:
+  default:
+    driver: bridge
+  proxy:
+    name: proxy
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.91.0/24
+#secrets:
+#  plex_claim:
+#    file: ./secrets/plex_claim
+#  CF_API_EMAIL:
+#    file: ./secrets/CF_API_EMAIL
+#  CF_DNS_API_TOKEN:
+#    file: ./secrets/CF_DNS_API_TOKEN
+
+include:
+  ### SERVICES ###
+
+  # Proxy
+  - $DOCKERDIR/traefik/docker-compose-traefik.yml
+  # Logs
+  - $DOCKERDIR/compose/dozzle/docker-compose-dozzle.yml
+  # Real-Debrid 
+  - $DOCKERDIR/compose/zurg/docker-compose-zurg.yml
+  # Plex
+  - $DOCKERDIR/compose/plex/docker-compose-plex.yml
+  # Overseerr
+#  - $DOCKERDIR/compose/overseerr/docker-compose-overseerr.yml
+  # Sonarr
+  - $DOCKERDIR/compose/sonarr/docker-compose-sonarr.yml
+  # Radarr
+  - $DOCKERDIR/compose/radarr/docker-compose-radarr.yml
+  # Prowlarr
+  - $DOCKERDIR/compose/prowlarr/docker-compose-prowlarr.yml
+  # Autoscan
+  - $DOCKERDIR/compose/autoscan/docker-compose-autoscan.yml
+  # Navidrome
+  - $DOCKERDIR/compose/navidrome/docker-compose-navidrome.yml
+  # Metube
+  - $DOCKERDIR/compose/metube/docker-compose-metube.yml
+  # SpotDL
+#  - $DOCKERDIR/compose/spotdl/docker-compose-spotdl.yml
+  # Headphones
+#  - $DOCKERDIR/compose/headphones/docker-compose-headphones.yml
+  # Beets
+#  - $DOCKERDIR/compose/beets/docker-compose-beets.yml
+  # Kavita
+#  - $DOCKERDIR/compose/kavita/docker-compose-kavita.yml
+  # Lidarr
+#  - $DOCKERDIR/compose/lidarr/docker-compose-lidarr.yml
+  # Web
+  - $DOCKERDIR/webserver/docker-compose-web.yml
+  # Web
+#  - $DOCKERDIR/web/timesheet/docker-compose-timesheet.yml
