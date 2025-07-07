@@ -1,1 +1,4 @@
-.
+DELETE THIS FILE AND FOKLOW INSTRUCTIONS 
+BELOW....
+touch /var/acme.json
+chmod 600 /var/acme.json
